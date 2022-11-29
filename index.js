@@ -20,8 +20,15 @@ app.get('/blogs', (req,res) => {
 	});
 });
 
-app.post('blogs', () => {
-	console.log(req.body)
+app.post('blogs', (req,res) => {
+	blogList.push({title: req.body.title, content:req.body.content, id:Math.floor(Math.random(1000) * 1000)});
+	return res.status(201).json({
+		success:true
+	})
+});
+
+app.get('/blogs/:id', (req,res) =>{
+
 });
 
 app.listen(PORT, () => {
